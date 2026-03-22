@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>船灯・灯火類 検査基準まとめ｜初任船舶検査官研修</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap');
+  :root {
+    --navy: #0a1628;
+    --blue: #1a3a6e;
+    --accent: #00b4d8;
+    --gold: #ffd166;
+    --green: #06d6a0;
+    --red: #ef476f;
+    --white: #f0f4ff;
+    --cell: #12223f;
+    --border: #2a4a7f;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    min-height: 100vh;
+  }
+
+  /* ===== TITLE SLIDE ===== */
+  .title-slide {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(ellipse at 30% 40%, #1a3a6e 0%, #0a1628 70%);
+    position: relative;
+    overflow: hidden;
+    padding: 40px;
+    text-align: center;
+  }
+  .title-slide::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%231a3a6e' stroke-width='1'%3E%3Cpath d='M0 30h60M30 0v60'/%3E%3C/g%3E%3C/svg%3E") repeat;
+    opacity: 0.3;
+  }
+  .badge {
+    display: inline-block;
+    background: rgba(0,180,216,0.15);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 6px 20px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .title-slide h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.2;
+    position: relative;
+    text-shadow: 0 0 40px rgba(0,180,216,0.4);
+  }
+  .title-slide h1 span { color: var(--accent); }
+  .subtitle { font-size: 1.1rem; color: #8ab4d4; margin-top: 16px; position: relative; }
+  .ref-box {
+    margin-top: 32px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 28px;
+    font-size: 0.85rem;
+    color: #8ab4d4;
+    position: relative;
+  }
+
+  /* ===== MAIN TABLE SLIDE ===== */
+  .slide {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 48px 32px;
+  }
+  .slide-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .slide-num {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  .slide-header h2 { font-size: 1.8rem; font-weight: 700; }
+  .slide-header h2 span { color: var(--accent); }
+  .ref-label {
+    margin-left: auto;
+    font-size: 0.75rem;
+    color: #5a7a9a;
+    border: 1px solid #2a4a7f;
+    padding: 4px 12px;
+    border-radius: 6px;
+  }
+
+  /* ===== MATRIX TABLE ===== */
+  .matrix-wrap { overflow-x: auto; }
+  table.matrix {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+  table.matrix th, table.matrix td {
+    border: 1px solid var(--border);
+    padding: 0;
+    vertical-align: top;
+  }
+  .col-header {
+    background: linear-gradient(135deg, #0d2547, #1a3a6e);
+    text-align: center;
+    padding: 16px 10px;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+  .col-header .range {
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .col-header .range-sub { font-size: 0.8rem; color: #8ab4d4; }
+  .row-header {
+    background: linear-gradient(135deg, #0d2547, #112033);
+    text-align: center;
+    padding: 12px 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    vertical-align: middle;
+    width: 110px;
+  }
+  .row-header .icon { font-size: 1.4rem; display: block; margin-bottom: 4px; }
+  .cell {
+    background: var(--cell);
+    padding: 14px 12px;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    position: relative;
+  }
+  .cell:hover { background: #1a3050; transition: background 0.2s; }
+
+  /* type badge */
+  .type-badge {
+    display: inline-block;
+    background: rgba(0,180,216,0.15);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .type-badge.gold { background: rgba(255,209,102,0.15); border-color: var(--gold); color: var(--gold); }
+  .type-badge.green { background: rgba(6,214,160,0.15); border-color: var(--green); color: var(--green); }
+  .note {
+    margin-top: 8px;
+    padding: 6px 8px;
+    background: rgba(255,209,102,0.08);
+    border-left: 3px solid var(--gold);
+    font-size: 0.78rem;
+    color: #c8d8e8;
+    border-radius: 0 4px 4px 0;
+  }
+  .alt {
+    margin-top: 6px;
+    padding: 5px 8px;
+    background: rgba(6,214,160,0.08);
+    border-left: 3px solid var(--green);
+    font-size: 0.78rem;
+    color: #c8e8d8;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* ===== DIAGRAM SLIDE ===== */
+  .diagram-slide {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 24px 32px 48px;
+  }
+  .diagram-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 24px;
+  }
+  .diagram-card {
+    background: linear-gradient(180deg, #0d2547 0%, #0a1e3a 100%);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .diagram-card-header {
+    padding: 14px 18px;
+    font-weight: 700;
+    font-size: 1rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .diagram-card-header .size-tag {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 900;
+  }
+  .diagram-card svg { display: block; width: 100%; }
+
+  /* ===== DETAIL TABLE ===== */
+  .detail-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 0.82rem;
+  }
+  .detail-table th {
+    background: #0d2547;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    text-align: left;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .detail-table td {
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    background: #12223f;
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  .detail-table tr:nth-child(even) td { background: #0e1d35; }
+
+  /* ===== FOOTER ===== */
+  .page-footer {
+    text-align: center;
+    padding: 16px;
+    font-size: 0.75rem;
+    color: #3a5a7a;
+    border-top: 1px solid #1a2a4a;
+  }
+  .divider {
+    height: 4px;
+    background: linear-gradient(90deg, var(--navy), var(--accent), var(--navy));
+    margin: 0;
+  }
+
+  /* highlight colors */
+  .hl-red { color: #ff7a9a; font-weight: 700; }
+  .hl-green { color: var(--green); font-weight: 700; }
+  .hl-gold { color: var(--gold); font-weight: 700; }
+  .hl-blue { color: #7ab4ff; font-weight: 700; }
+
+  @media print {
+    body { background: #fff; color: #000; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     SLIDE 1: タイトル
+     ============================================================ -->
+<div class="title-slide">
+  <span class="badge">初任船舶検査官 研修資料</span>
+  <h1>船灯・灯火類<br><span>検査基準まとめ</span></h1>
+  <p class="subtitle">小型船舶（非自航船・帆船以外）― 全長区分別 備付・位置要件</p>
+  <div class="ref-box">
+    根拠：船舶検査細則 第82条・第20条 ／ 航海用具の基準を定める告示 第2条・第20条<br>
+    （令和7年4月24日版 pp.150-151, 404, 406-408）
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============================================================
+     SLIDE 2: 種別・備付マトリクス表
+     ============================================================ -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="slide-num">1</div>
+    <h2>灯火の<span>種別・備付</span>要件マトリクス</h2>
+    <span class="ref-label">細則 第82条 / pp.150-151</span>
+  </div>
+
+  <div class="matrix-wrap">
+    <table class="matrix">
+      <colgroup>
+        <col style="width:110px">
+        <col style="width:calc((100% - 110px)/3)">
+        <col style="width:calc((100% - 110px)/3)">
+        <col style="width:calc((100% - 110px)/3)">
+      </colgroup>
+      <thead>
+        <tr>
+          <th class="row-header" style="border-bottom:2px solid var(--accent);">灯火の種類</th>
+          <th class="col-header">
+            <span class="range">12m 未満</span>
+            <span class="range-sub">L &lt; 12m</span>
+          </th>
+          <th class="col-header">
+            <span class="range">12m 以上 20m 未満</span>
+            <span class="range-sub">12m ≦ L &lt; 20m</span>
+          </th>
+          <th class="col-header">
+            <span class="range">20m 以上</span>
+            <span class="range-sub">全長 20m ≦ L</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- マスト灯 -->
+        <tr>
+          <td class="row-header">
+            <span class="icon">🔦</span>
+            マスト灯
+          </td>
+          <td class="cell">
+            <span class="type-badge gold">第1〜第4種（いずれか）</span><br>
+            <b>高さ：</b>できる限り高い位置<br>
+            <b>前後：</b>できる限り前方<br>
+            <b>他灯との関係：</b>他の全ての船灯より上方<br>
+            <div class="alt">⚡ 動力船はマスト灯＋船尾灯を<br>　 白灯（全周灯）1個で代用可</div>
+          </td>
+          <td class="cell">
+            <span class="type-badge">第1種 または 第2種</span><br>
+            <b>高さ：</b>舷縁上 <span class="hl-gold">2.5m 以上</span><br>
+            <b>前後：</b>できる限り前方<br>
+            <b>他灯との関係：</b>他の全ての船灯より上方
+          </td>
+          <td class="cell">
+            <span class="type-badge">第1種 または 第2種</span><br>
+            <b>高さ：</b>上甲板上 <span class="hl-gold">6m 以上</span><br>
+            　※最大幅が6mを超える場合は最大幅と等しい高さ以上（最大12m）<br>
+            <b>前後：</b>船体中央より前方<br>
+            <b>他灯との関係：</b>他の全ての船灯より上方
+          </td>
+        </tr>
+
+        <!-- 舷灯 -->
+        <tr>
+          <td class="row-header">
+            <span class="icon">🟢🔴</span>
+            舷灯
+          </td>
+          <td class="cell">
+            <span class="type-badge gold">第1〜第3種（いずれか）</span><br>
+            <b>高さ：</b>マスト灯（又は白灯）の高さの <span class="hl-red">3/4 以下</span><br>
+            <b>位置：</b>舷側またはその付近<br>
+            <div class="note">📌 マスト灯の高さが舷縁上 <span class="hl-gold">2.5m 未満</span> の場合は<br>　マスト灯（又は白灯）より垂直距離 <span class="hl-gold">1m 以上</span> 下方</div>
+            <div class="alt">🔁 第1種または第2種両色灯で代用可</div>
+          </td>
+          <td class="cell">
+            <span class="type-badge">第1種 または 第2種</span><br>
+            <b>高さ：</b>マスト灯の高さの <span class="hl-red">3/4 以下</span><br>
+            <b>位置：</b>舷側またはその付近<br>
+            <div class="alt">🔁 第1種両色灯で代用可</div>
+          </td>
+          <td class="cell">
+            <span class="type-badge">第1種 または 第2種</span><br>
+            <b>高さ：</b>マスト灯の高さの <span class="hl-red">3/4 以下</span><br>
+            <b>前後：</b>マスト灯より前方にならないこと<br>
+            <b>位置：</b>舷側またはその付近<br>
+            <div class="note">📌 <span class="hl-red">黒色のつや消し塗装</span>を施した<br>　内側隔板を設けること</div>
+          </td>
+        </tr>
+
+        <!-- 両色灯 -->
+        <tr>
+          <td class="row-header">
+            <span class="icon">⬛</span>
+            両色灯
+          </td>
+          <td class="cell">
+            <span class="type-badge green">第1種 または 第2種</span><br>
+            <b>位置：</b>船の首尾線上（中心線上）<br>
+            <b>高さ：</b>マスト灯（又は白灯）の高さの <span class="hl-red">3/4 以下</span><br>
+            <div class="note">📌 舷灯の代用として備え付け</div>
+          </td>
+          <td class="cell">
+            <span class="type-badge green">第1種</span><br>
+            <b>位置：</b>船の首尾線上（中心線上）<br>
+            <b>高さ：</b>マスト灯の高さの <span class="hl-red">3/4 以下</span><br>
+            <b>他灯との関係：</b>マスト灯より<br>　垂直距離 <span class="hl-gold">1m 以上</span> 下方<br>
+            <div class="note">📌 舷灯の代用として備え付け</div>
+          </td>
+          <td class="cell" style="background:#0e1c30; color:#4a6a8a; text-align:center; vertical-align:middle; font-style:italic;">
+            ― 備付不可 ―<br>
+            <span style="font-size:0.78rem;">（舷灯を使用）</span>
+          </td>
+        </tr>
+
+        <!-- 船尾灯 -->
+        <tr>
+          <td class="row-header">
+            <span class="icon">⬜</span>
+            船尾灯
+          </td>
+          <td class="cell">
+            <span class="type-badge gold">第1〜第3種（いずれか）</span><br>
+            <b>位置：</b>できる限り船尾に近い位置<br>
+            　　首尾線上（中心線上）<br>
+            <b>高さ：</b>特定規定なし<br>
+            <div class="alt">⚡ 動力船は白灯（全周灯）1個で<br>　 マスト灯と兼用可</div>
+          </td>
+          <td class="cell">
+            <span class="type-badge">第1種 または 第2種</span><br>
+            <b>位置：</b>できる限り船尾に近い位置<br>
+            　　首尾線上（中心線上）<br>
+            <b>高さ：</b>特定規定なし
+          </td>
+          <td class="cell">
+            <span class="type-badge">第1種 または 第2種</span><br>
+            <b>位置：</b>できる限り船尾に近い位置<br>
+            　　首尾線上（中心線上）<br>
+            <b>高さ：</b>特定規定なし<br>
+            <b>他灯との関係：</b>視界を妨げない位置
+          </td>
+        </tr>
+
+        <!-- 停泊灯 -->
+        <tr>
+          <td class="row-header">
+            <span class="icon">🔵</span>
+            停泊灯
+          </td>
+          <td class="cell">
+            <span class="type-badge gold">第1〜第3種（いずれか）</span><br>
+            <b>位置：</b>できる限り高い位置<br>
+            <b>向き：</b>全周（360°）に見える位置<br>
+            <b>色：</b>白色<br>
+            <div class="alt">⚡ マスト灯・船尾灯の代用白灯と<br>　 兼用可（動力船）</div>
+          </td>
+          <td class="cell">
+            <span class="type-badge">第1種 または 第2種</span><br>
+            <b>位置：</b>できる限り高い位置<br>
+            <b>向き：</b>全周（360°）に見える位置<br>
+            <b>色：</b>白色
+          </td>
+          <td class="cell">
+            <span class="type-badge">第1種 または 第2種</span><br>
+            <b>位置：</b>できる限り高い位置<br>
+            <b>向き：</b>全周（360°）に見える位置<br>
+            <b>色：</b>白色
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============================================================
+     SLIDE 3: 船側面図（3区分）
+     ============================================================ -->
+<div class="diagram-slide">
+  <div class="slide-header">
+    <div class="slide-num">2</div>
+    <h2>船の<span>側面図</span>と灯火の位置関係</h2>
+    <span class="ref-label">告示 第20条 / pp.406-408</span>
+  </div>
+
+  <div class="diagram-grid">
+
+    <!-- ① 全長12m未満 -->
+    <div class="diagram-card">
+      <div class="diagram-card-header">
+        <span class="size-tag">L &lt; 12m</span> 全長12m未満
+      </div>
+      <svg viewBox="0 0 320 310" xmlns="http://www.w3.org/2000/svg" style="padding:8px">
+        <text x="210" y="16" fill="#aaffaa" font-size="10" font-family="sans-serif" font-weight="bold">進行方向 →</text>
+
+        <!-- 海面 -->
+        <rect x="0" y="248" width="320" height="62" fill="#0a2040"/>
+        <path d="M0 248 Q60 243 120 248 Q190 253 260 248 Q300 243 320 248 L320 310 L0 310Z" fill="#0d2f55" opacity="0.6"/>
+
+        <!-- 船体 -->
+        <path d="M22 216 L255 216 L275 233 L10 233Z" fill="#1a3a6e" stroke="#2a5a9e" stroke-width="1.5"/>
+        <line x1="22" y1="216" x2="255" y2="216" stroke="#3a6aae" stroke-width="2"/>
+        <polygon points="255,206 278,233 255,216" fill="#1a3a6e" stroke="#2a5a9e" stroke-width="1"/>
+
+        <!-- マスト -->
+        <line x1="175" y1="108" x2="175" y2="216" stroke="#4a7ab4" stroke-width="2.5" opacity="0.4"/>
+        <!-- マスト灯（薄く＝省略可） -->
+        <circle cx="175" cy="108" r="9" fill="#fffacd" stroke="#ffd166" stroke-width="1.5" opacity="0.4"/>
+        <text x="186" y="104" fill="#ffd166" font-size="8.5" font-family="sans-serif" opacity="0.5">マスト灯</text>
+        <text x="186" y="115" fill="#8ab4d4" font-size="7.5" font-family="sans-serif" opacity="0.5">（省略可）</text>
+
+        <!-- 白灯(全周灯)代用 -->
+        <circle cx="175" cy="108" r="16" fill="none" stroke="#06d6a0" stroke-width="1.2" stroke-dasharray="5,3"/>
+        <text x="18" y="82" fill="#06d6a0" font-size="7.5" font-family="sans-serif">白灯(全周灯)で</text>
+        <text x="18" y="93" fill="#06d6a0" font-size="7.5" font-family="sans-serif">マスト灯＋船尾灯</text>
+        <text x="18" y="104" fill="#06d6a0" font-size="7.5" font-family="sans-serif">代用可(動力船)</text>
+
+        <!-- 停泊灯 -->
+        <circle cx="175" cy="133" r="5" fill="white" stroke="#aaffff" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <text x="182" y="136" fill="#aaffff" font-size="7.5" font-family="sans-serif">停泊灯</text>
+        <!-- 停泊灯↔両色灯 1m以上（マスト高2.5m未満時） -->
+        <line x1="159" y1="133" x2="159" y2="163" stroke="#ff9966" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <text x="96" y="152" fill="#ff9966" font-size="7.5" font-family="sans-serif">1m以上↕</text>
+        <text x="91" y="162" fill="#ff9966" font-size="7" font-family="sans-serif">(停泊灯との距離)</text>
+
+        <!-- 両色灯 or 舷灯 -->
+        <text x="100" y="158" fill="#c8c8ff" font-size="8" font-family="sans-serif">または</text>
+        <!-- 両色灯（首尾線上、マストと同位置） -->
+        <circle cx="175" cy="168" r="8" fill="url(#bc12m)" stroke="#aaaaff" stroke-width="1.3" stroke-dasharray="3,2"/>
+        <defs>
+          <linearGradient id="bc12m" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="50%" stop-color="#ff4466"/>
+            <stop offset="50%" stop-color="#00ff88"/>
+          </linearGradient>
+        </defs>
+        <text x="128" y="185" fill="#c8c8ff" font-size="7.5" font-family="sans-serif">両色灯(第1・2種)</text>
+        <!-- 右舷灯（破線=代替） -->
+        <circle cx="248" cy="172" r="8" fill="#00cc66" stroke="#06d6a0" stroke-width="1.5" stroke-dasharray="3,2"/>
+        <text x="260" y="169" fill="#06d6a0" font-size="7.5" font-family="sans-serif">右舷灯(緑)</text>
+
+        <!-- マスト高2.5m未満の場合 1m以上注記 -->
+        <line x1="159" y1="108" x2="159" y2="168" stroke="#ffaaaa" stroke-width="1" stroke-dasharray="2,3" opacity="0.6"/>
+        <text x="58" y="128" fill="#ffaaaa" font-size="7" font-family="sans-serif">※高さ2.5m未満の場合</text>
+        <text x="58" y="138" fill="#ffaaaa" font-size="7" font-family="sans-serif">　舷灯と1m以上離す</text>
+
+        <!-- 船尾灯（薄く） -->
+        <circle cx="30" cy="211" r="7" fill="white" stroke="#aaaaff" stroke-width="1.5" opacity="0.4"/>
+        <text x="5" y="265" fill="#aaaaff" font-size="8" font-family="sans-serif" opacity="0.5">船尾灯（省略可）</text>
+      </svg>
+    </div>
+
+    <!-- ② 全長12m以上20m未満 -->
+    <div class="diagram-card">
+      <div class="diagram-card-header">
+        <span class="size-tag">12m ≦ L &lt; 20m</span> 12m以上20m未満
+      </div>
+      <svg viewBox="0 0 320 310" xmlns="http://www.w3.org/2000/svg" style="padding:8px">
+        <text x="210" y="16" fill="#aaffaa" font-size="10" font-family="sans-serif" font-weight="bold">進行方向 →</text>
+
+        <!-- 海面 -->
+        <rect x="0" y="248" width="320" height="62" fill="#0a2040"/>
+        <path d="M0 248 Q60 243 120 248 Q190 253 260 248 Q300 243 320 248 L320 310 L0 310Z" fill="#0d2f55" opacity="0.6"/>
+
+        <!-- 船体 -->
+        <path d="M15 213 L285 213 L305 231 L5 231Z" fill="#1a3a6e" stroke="#2a5a9e" stroke-width="1.5"/>
+        <line x1="15" y1="213" x2="285" y2="213" stroke="#3a6aae" stroke-width="2"/>
+        <polygon points="285,203 308,231 285,213" fill="#1a3a6e" stroke="#2a5a9e" stroke-width="1"/>
+
+        <!-- 舷縁上2.5m基準線 -->
+        <line x1="165" y1="176" x2="215" y2="176" stroke="#ffd166" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="55" y="179" fill="#ffd166" font-size="7.5" font-family="sans-serif">舷縁上2.5m以上 →</text>
+
+        <!-- マスト（薄く） -->
+        <line x1="195" y1="110" x2="195" y2="213" stroke="#4a7ab4" stroke-width="2.5" opacity="0.4"/>
+        <!-- マスト灯（薄く＝省略可） -->
+        <circle cx="195" cy="110" r="9" fill="#fffacd" stroke="#ffd166" stroke-width="1.5" opacity="0.4"/>
+        <text x="207" y="106" fill="#ffd166" font-size="8.5" font-family="sans-serif" opacity="0.5">マスト灯</text>
+        <text x="207" y="117" fill="#8ab4d4" font-size="7.5" font-family="sans-serif" opacity="0.5">舷縁上2.5m（省略可）</text>
+
+        <!-- 白灯(全周灯)代用 -->
+        <circle cx="195" cy="110" r="16" fill="none" stroke="#06d6a0" stroke-width="1.2" stroke-dasharray="5,3"/>
+        <text x="18" y="85" fill="#06d6a0" font-size="7.5" font-family="sans-serif">白灯(全周灯)で</text>
+        <text x="18" y="96" fill="#06d6a0" font-size="7.5" font-family="sans-serif">マスト灯＋船尾灯</text>
+        <text x="18" y="107" fill="#06d6a0" font-size="7.5" font-family="sans-serif">代用可(動力船)</text>
+
+        <!-- 停泊灯 -->
+        <circle cx="195" cy="136" r="5" fill="white" stroke="#aaffff" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <text x="202" y="139" fill="#aaffff" font-size="7.5" font-family="sans-serif">停泊灯</text>
+        <!-- 停泊灯↔両色灯 1m以上 -->
+        <line x1="178" y1="136" x2="178" y2="168" stroke="#ff9966" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <text x="95" y="156" fill="#ff9966" font-size="7.5" font-family="sans-serif">1m以上↕</text>
+        <text x="90" y="166" fill="#ff9966" font-size="7" font-family="sans-serif">(停泊灯との距離)</text>
+
+        <!-- 両色灯 or 舷灯 -->
+        <text x="105" y="160" fill="#c8c8ff" font-size="8" font-family="sans-serif">または</text>
+        <!-- 両色灯（首尾線上、マストと同X位置） -->
+        <circle cx="195" cy="171" r="8" fill="url(#bc1220)" stroke="#aaaaff" stroke-width="1.3" stroke-dasharray="3,2"/>
+        <defs>
+          <linearGradient id="bc1220" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="50%" stop-color="#ff4466"/>
+            <stop offset="50%" stop-color="#00ff88"/>
+          </linearGradient>
+        </defs>
+        <text x="148" y="188" fill="#c8c8ff" font-size="7.5" font-family="sans-serif">両色灯(第1種)</text>
+        <!-- 右舷灯 -->
+        <circle cx="268" cy="175" r="8" fill="#00cc66" stroke="#06d6a0" stroke-width="1.5" stroke-dasharray="3,2"/>
+        <text x="280" y="172" fill="#06d6a0" font-size="7.5" font-family="sans-serif">右舷灯(緑)</text>
+
+        <!-- 船尾灯（薄く） -->
+        <circle cx="28" cy="208" r="7" fill="white" stroke="#aaaaff" stroke-width="1.5" opacity="0.4"/>
+        <text x="5" y="265" fill="#aaaaff" font-size="8" font-family="sans-serif" opacity="0.5">船尾灯（省略可）</text>
+      </svg>
+    </div>
+
+    <!-- ③ 全長20m以上 -->
+    <div class="diagram-card">
+      <div class="diagram-card-header">
+        <span class="size-tag">L ≧ 20m</span> 全長20m以上
+      </div>
+      <svg viewBox="0 0 340 310" xmlns="http://www.w3.org/2000/svg" style="padding:8px">
+        <text x="230" y="16" fill="#aaffaa" font-size="10" font-family="sans-serif" font-weight="bold">進行方向 →</text>
+
+        <!-- 海面 -->
+        <rect x="0" y="248" width="340" height="62" fill="#0a2040"/>
+        <path d="M0 248 Q60 243 120 248 Q190 253 270 248 Q315 243 340 248 L340 310 L0 310Z" fill="#0d2f55" opacity="0.6"/>
+
+        <!-- 船体 -->
+        <path d="M8 200 L305 200 L325 223 L2 223Z" fill="#1a3a6e" stroke="#2a5a9e" stroke-width="1.5"/>
+        <line x1="8" y1="200" x2="305" y2="200" stroke="#3a6aae" stroke-width="2"/>
+        <polygon points="305,188 328,223 305,200" fill="#1a3a6e" stroke="#2a5a9e" stroke-width="1"/>
+
+        <!-- L/2中央ライン -->
+        <line x1="168" y1="185" x2="168" y2="235" stroke="#3a5a7a" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="152" y="242" fill="#3a5a7a" font-size="7.5" font-family="sans-serif">← L/2 →</text>
+        <text x="250" y="195" fill="#3a5a7a" font-size="7.5" font-family="sans-serif">前方(船首側)</text>
+
+        <!-- 上甲板上6m基準線 -->
+        <line x1="210" y1="68" x2="255" y2="68" stroke="#ffd166" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="58" y="71" fill="#ffd166" font-size="7.5" font-family="sans-serif">上甲板上6m以上 →</text>
+
+        <!-- マスト（L/2より前） -->
+        <line x1="235" y1="65" x2="235" y2="200" stroke="#4a7ab4" stroke-width="3"/>
+        <text x="212" y="200" fill="#4a8aaa" font-size="7.5" font-family="sans-serif">L/2より前</text>
+
+        <!-- マスト灯 -->
+        <circle cx="235" cy="65" r="9" fill="#fffacd" stroke="#ffd166" stroke-width="2"/>
+        <text x="247" y="62" fill="#ffd166" font-size="9" font-family="sans-serif" font-weight="bold">マスト灯</text>
+        <text x="247" y="73" fill="#8ab4d4" font-size="8" font-family="sans-serif">第1・2種</text>
+        <path d="M235 65 L140 170 L235 65 L330 170Z" fill="#fffacd" opacity="0.07"/>
+
+        <!-- 停泊灯 -->
+        <circle cx="235" cy="97" r="5" fill="white" stroke="#aaffff" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <text x="243" y="100" fill="#aaffff" font-size="7.5" font-family="sans-serif">停泊灯(第1・2種)</text>
+
+        <!-- 右舷灯(緑) ＋ 内側隔板（マストより後方＝左側 x=130） -->
+        <circle cx="130" cy="140" r="10" fill="#00cc66" stroke="#06d6a0" stroke-width="1.5"/>
+        <!-- 内側隔板（黒・つや消し）-->
+        <path d="M130 130 A10 10 0 0 0 130 150 Z" fill="#111111" stroke="#333" stroke-width="0.5"/>
+        <text x="12" y="133" fill="#06d6a0" font-size="8" font-family="sans-serif">右舷灯(緑)</text>
+        <text x="12" y="143" fill="#8ab4d4" font-size="7.5" font-family="sans-serif">第1・2種</text>
+        <text x="12" y="155" fill="#8ab4d4" font-size="7" font-family="sans-serif">マストより後方</text>
+        <line x1="143" y1="140" x2="168" y2="153" stroke="#888" stroke-width="0.8"/>
+        <text x="170" y="150" fill="#ff9966" font-size="7.5" font-family="sans-serif" font-weight="bold">黒色つや消し</text>
+        <text x="170" y="160" fill="#ff9966" font-size="7.5" font-family="sans-serif" font-weight="bold">内側隔板</text>
+
+        <!-- 船尾灯 -->
+        <circle cx="18" cy="195" r="7" fill="white" stroke="#aaaaff" stroke-width="1.5"/>
+        <text x="2" y="265" fill="#aaaaff" font-size="8.5" font-family="sans-serif">船尾灯 第1・2種</text>
+      </svg>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============================================================
+     SLIDE 4: 真上から見た照射範囲
+     ============================================================ -->
+<div class="diagram-slide">
+  <div class="slide-header">
+    <div class="slide-num">3</div>
+    <h2>灯火の<span>水平射光範囲</span>（上面図）</h2>
+    <span class="ref-label">海上衝突予防法 第20条 / 告示 p.404</span>
+  </div>
+
+  <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:24px; margin-top:20px;">
+
+    <!-- マスト灯 225° -->
+    <div class="diagram-card">
+      <div class="diagram-card-header">🔦 マスト灯</div>
+      <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" style="padding:10px">
+        <!-- 225°の扇形（船首±112.5°） -->
+        <path d="M110 110 L31.5 142.5 A85 85 0 1 1 188.5 142.5 Z" fill="#fffacd" opacity="0.18"/>
+        <path d="M110 110 L31.5 142.5 A85 85 0 1 1 188.5 142.5 Z" fill="none" stroke="#ffd166" stroke-width="1.5"/>
+        <!-- 射光なし区域（後方135°）をグレーで -->
+        <path d="M110 110 L188.5 142.5 A85 85 0 0 1 31.5 142.5 Z" fill="#1a2a3a" opacity="0.6"/>
+        <path d="M110 110 L188.5 142.5 A85 85 0 0 1 31.5 142.5 Z" fill="none" stroke="#2a4a6a" stroke-width="1" stroke-dasharray="4,3"/>
+        <circle cx="110" cy="110" r="12" fill="#fffacd" stroke="#ffd166" stroke-width="2"/>
+        <text x="62" y="198" fill="#ffd166" font-size="11" font-family="sans-serif" font-weight="bold">前方 225°</text>
+        <text x="32" y="212" fill="#8ab4d4" font-size="9.5" font-family="sans-serif">（船首方向±112.5°）</text>
+        <text x="75" y="172" fill="#4a6a8a" font-size="9" font-family="sans-serif">（死角　135°）</text>
+        <!-- 船首矢印 -->
+        <defs><marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6Z" fill="#ffd166"/></marker></defs>
+        <line x1="110" y1="25" x2="110" y2="5" stroke="#ffd166" stroke-width="1.5" marker-end="url(#arr)"/>
+        <text x="98" y="4" fill="#ffd166" font-size="9" font-family="sans-serif">船首方向</text>
+        <!-- 境界線ラベル -->
+        <text x="2" y="150" fill="#ffd166" font-size="8" font-family="sans-serif">112.5°</text>
+        <text x="176" y="150" fill="#ffd166" font-size="8" font-family="sans-serif">112.5°</text>
+      </svg>
+    </div>
+
+    <!-- 舷灯 / 両色灯 -->
+    <div class="diagram-card">
+      <div class="diagram-card-header">🟢🔴 舷灯 / 両色灯</div>
+      <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" style="padding:10px">
+        <!-- 右舷（緑） 112.5° -->
+        <path d="M110 110 L110 25 A85 85 0 0 1 189 167Z" fill="#00ff88" opacity="0.18"/>
+        <path d="M110 110 L110 25 A85 85 0 0 1 189 167Z" fill="none" stroke="#06d6a0" stroke-width="1.5"/>
+        <!-- 左舷（赤） 112.5° -->
+        <path d="M110 110 L110 25 A85 85 0 0 0 31 167Z" fill="#ff4466" opacity="0.18"/>
+        <path d="M110 110 L110 25 A85 85 0 0 0 31 167Z" fill="none" stroke="#ef476f" stroke-width="1.5"/>
+        <circle cx="110" cy="110" r="10" fill="#aaaaaa" stroke="#cccccc" stroke-width="1.5"/>
+        <text x="62" y="198" fill="#c8d8e8" font-size="10" font-family="sans-serif" font-weight="bold">各舷 112.5°</text>
+        <text x="42" y="212" fill="#8ab4d4" font-size="9.5" font-family="sans-serif">（船首方向＋22.5°ずつ）</text>
+        <text x="155" y="130" fill="#06d6a0" font-size="10" font-family="sans-serif">緑</text>
+        <text x="42" y="130" fill="#ef476f" font-size="10" font-family="sans-serif">赤</text>
+        <line x1="110" y1="25" x2="110" y2="5" stroke="#c8d8e8" stroke-width="1" marker-end="url(#arr2)"/>
+        <defs><marker id="arr2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6Z" fill="#c8d8e8"/></marker></defs>
+        <text x="98" y="4" fill="#c8d8e8" font-size="9" font-family="sans-serif">船首方向</text>
+      </svg>
+    </div>
+
+    <!-- 船尾灯 -->
+    <div class="diagram-card">
+      <div class="diagram-card-header">⬜ 船尾灯</div>
+      <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" style="padding:10px">
+        <!-- 船尾灯135°：船尾方向（下）±67.5° -->
+        <!-- 開始点(112.5°から ahead): 右下(188.5,142.5)、終点(247.5°): 左下(31.5,142.5) -->
+        <path d="M110 110 L188.5 142.5 A85 85 0 0 1 31.5 142.5 Z" fill="white" opacity="0.18"/>
+        <path d="M110 110 L188.5 142.5 A85 85 0 0 1 31.5 142.5 Z" fill="none" stroke="#aaaaff" stroke-width="1.5"/>
+        <!-- 射光なし区域（前方225°）をグレーで -->
+        <path d="M110 110 L31.5 142.5 A85 85 0 1 1 188.5 142.5 Z" fill="#1a2a3a" opacity="0.6"/>
+        <path d="M110 110 L31.5 142.5 A85 85 0 1 1 188.5 142.5 Z" fill="none" stroke="#2a4a6a" stroke-width="1" stroke-dasharray="4,3"/>
+        <circle cx="110" cy="110" r="10" fill="#ffffff" stroke="#aaaaff" stroke-width="2"/>
+        <text x="68" y="20" fill="#c8d8e8" font-size="10" font-family="sans-serif" font-weight="bold">後方 135°</text>
+        <text x="32" y="33" fill="#8ab4d4" font-size="9.5" font-family="sans-serif">（真後ろ±67.5°）</text>
+        <text x="60" y="65" fill="#4a6a8a" font-size="9" font-family="sans-serif">（死角　225°）</text>
+        <!-- 船首方向（上）矢印 -->
+        <defs><marker id="arr3" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6Z" fill="#8ab4d4"/></marker></defs>
+        <line x1="110" y1="25" x2="110" y2="5" stroke="#8ab4d4" stroke-width="1" marker-end="url(#arr3)"/>
+        <text x="98" y="4" fill="#8ab4d4" font-size="9" font-family="sans-serif">船首方向</text>
+        <!-- 船尾方向（下）矢印 -->
+        <defs><marker id="arr4" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6Z" fill="#aaaaff"/></marker></defs>
+        <line x1="110" y1="195" x2="110" y2="215" stroke="#aaaaff" stroke-width="1.5" marker-end="url(#arr4)"/>
+        <text x="98" y="216" fill="#aaaaff" font-size="9" font-family="sans-serif">船尾方向</text>
+        <!-- 境界線ラベル -->
+        <text x="2" y="150" fill="#aaaaff" font-size="8" font-family="sans-serif">67.5°</text>
+        <text x="190" y="150" fill="#aaaaff" font-size="8" font-family="sans-serif">67.5°</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============================================================
+     SLIDE 5: 灯火の種別（光達距離）詳細
+     ============================================================ -->
+<div class="diagram-slide">
+  <div class="slide-header">
+    <div class="slide-num">4</div>
+    <h2>灯火の<span>種別</span>（光達距離・光度基準）</h2>
+    <span class="ref-label">告示 第2条 / p.404</span>
+  </div>
+
+  <table class="detail-table">
+    <thead>
+      <tr>
+        <th>種別</th>
+        <th>適用灯火</th>
+        <th>光達距離（最小）</th>
+        <th>備考</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="type-badge">第1種</span></td>
+        <td>マスト灯・舷灯・両色灯・船尾灯・停泊灯</td>
+        <td><span class="hl-gold">6海里</span>（マスト灯）<br><span class="hl-gold">3海里</span>（舷灯・両色灯・船尾灯）<br><span class="hl-gold">2海里</span>（停泊灯）</td>
+        <td>全長20m以上の船に適用可</td>
+      </tr>
+      <tr>
+        <td><span class="type-badge">第2種</span></td>
+        <td>マスト灯・舷灯・両色灯・船尾灯・停泊灯</td>
+        <td><span class="hl-green">3海里</span>（マスト灯）<br><span class="hl-green">2海里</span>（舷灯・両色灯・船尾灯）<br><span class="hl-green">2海里</span>（停泊灯）</td>
+        <td>全長12m以上20m未満に適用可</td>
+      </tr>
+      <tr>
+        <td><span class="type-badge gold">第3種</span></td>
+        <td>マスト灯・舷灯・船尾灯・停泊灯</td>
+        <td><span class="hl-blue">2海里</span>（マスト灯）<br><span class="hl-blue">1海里</span>（舷灯・船尾灯）<br><span class="hl-blue">1海里</span>（停泊灯）</td>
+        <td>全長12m未満のみ適用可</td>
+      </tr>
+      <tr>
+        <td><span class="type-badge gold">第4種</span></td>
+        <td>マスト灯のみ</td>
+        <td><span class="hl-red">1海里</span></td>
+        <td>全長12m未満のみ適用可</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top:18px; padding:14px 18px; background:rgba(0,180,216,0.08); border:1px solid var(--accent); border-radius:10px; font-size:0.85rem; line-height:1.8;">
+    <b style="color:var(--accent);">📐 最小光度計算式（告示 p.404）</b><br>
+    <code style="color:#c8f8ff; background:rgba(0,0,0,0.3); padding:4px 10px; border-radius:4px; display:inline-block; margin-top:6px;">
+      I = 3.43 × 10<sup>6</sup> × T × D<sup>2</sup> × K<sup>-D</sup>
+    </code><br>
+    I：光度（カンデラ）　T：閾値（lx）= 0.0000002　D：光達距離（海里）　K：大気の透過率 = 0.8<br>
+    <b>垂直射光範囲：</b>水平面の上下5°以内で規定光度を維持。5°〜7.5°では50%以上を維持。
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============================================================
+     SLIDE 6: 高さ関係まとめ（垂直断面図）
+     ============================================================ -->
+<div class="diagram-slide">
+  <div class="slide-header">
+    <div class="slide-num">5</div>
+    <h2>灯火の<span>高さ関係</span>まとめ（垂直断面模式図）</h2>
+    <span class="ref-label">告示 第20条 / pp.406-407</span>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:20px;">
+
+    <!-- 垂直関係図 -->
+    <div style="background:#0d2547; border:1px solid var(--border); border-radius:16px; padding:20px;">
+      <h3 style="color:var(--accent); margin-bottom:16px; font-size:1rem;">全長20m以上の汽船（垂直関係）</h3>
+      <svg viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg">
+        <!-- 船体 -->
+        <rect x="50" y="210" width="200" height="30" rx="5" fill="#1a3a6e" stroke="#2a5a9e" stroke-width="1.5"/>
+        <!-- 甲板線 -->
+        <line x1="50" y1="210" x2="250" y2="210" stroke="#3a6aae" stroke-width="2"/>
+        <text x="8" y="213" fill="#8ab4d4" font-size="9" font-family="sans-serif">上甲板</text>
+
+        <!-- マスト -->
+        <line x1="140" y1="60" x2="140" y2="210" stroke="#4a7ab4" stroke-width="3"/>
+
+        <!-- 6m基準線 -->
+        <line x1="110" y1="90" x2="175" y2="90" stroke="#ffd166" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="178" y="93" fill="#ffd166" font-size="8.5" font-family="sans-serif">上甲板上6m</text>
+
+        <!-- マスト灯 -->
+        <circle cx="140" cy="60" r="10" fill="#fffacd" stroke="#ffd166" stroke-width="2"/>
+        <text x="153" y="57" fill="#ffd166" font-size="10" font-family="sans-serif" font-weight="bold">マスト灯</text>
+        <text x="153" y="69" fill="#8ab4d4" font-size="8.5" font-family="sans-serif">第1・2種</text>
+
+        <!-- 1m以上 矢印 -->
+        <line x1="170" y1="60" x2="170" y2="138" stroke="#ff9966" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <text x="173" y="103" fill="#ff9966" font-size="9" font-family="sans-serif" font-weight="bold">1m以上↕</text>
+
+        <!-- 舷灯 -->
+        <circle cx="60" cy="148" r="8" fill="#ff4466" stroke="#ef476f" stroke-width="1.5"/>
+        <circle cx="220" cy="148" r="8" fill="#00ff88" stroke="#06d6a0" stroke-width="1.5"/>
+        <text x="72" y="145" fill="#c8d8e8" font-size="9" font-family="sans-serif">舷灯</text>
+        <text x="72" y="157" fill="#8ab4d4" font-size="8" font-family="sans-serif">マスト灯の3/4以下の高さ</text>
+
+        <!-- 3/4線 -->
+        <line x1="40" y1="135" x2="100" y2="135" stroke="#ff9966" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="5" y="133" fill="#ff9966" font-size="7.5" font-family="sans-serif">3/4高さ</text>
+
+        <!-- 船尾灯 -->
+        <circle cx="75" cy="207" r="7" fill="white" stroke="#aaaaff" stroke-width="1.5"/>
+        <text x="85" y="210" fill="#aaaaff" font-size="9" font-family="sans-serif">船尾灯 第1・2種</text>
+
+        <!-- 停泊灯 -->
+        <circle cx="140" cy="105" r="6" fill="white" stroke="#aaffff" stroke-width="1.5" stroke-dasharray="3,2"/>
+        <text x="148" y="108" fill="#aaffff" font-size="8" font-family="sans-serif">停泊灯（できるだけ高い位置）</text>
+      </svg>
+    </div>
+
+    <!-- 高さ一覧テーブル -->
+    <div>
+      <table class="detail-table">
+        <thead>
+          <tr>
+            <th>灯火</th>
+            <th>20m以上</th>
+            <th>12m〜20m未満</th>
+            <th>12m未満</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>マスト灯</b></td>
+            <td>上甲板上<br><span class="hl-gold">6m以上</span><br>（最大12m）</td>
+            <td>舷縁上<br><span class="hl-green">2.5m以上</span></td>
+            <td>できる限り<br><span class="hl-blue">高い位置</span></td>
+          </tr>
+          <tr>
+            <td><b>舷灯<br>/両色灯</b></td>
+            <td colspan="3" style="text-align:center;">マスト灯高さの <span class="hl-red">3/4以下</span><br>（かつ 20m以上はマスト灯から<span class="hl-gold">1m以上</span>下方）</td>
+          </tr>
+          <tr>
+            <td><b>船尾灯</b></td>
+            <td colspan="3" style="text-align:center;">できる限り<b>船尾に近い位置</b>（首尾線上）<br>視界を妨げない高さ</td>
+          </tr>
+          <tr>
+            <td><b>停泊灯</b></td>
+            <td colspan="3" style="text-align:center;">できる限り<b>高い位置</b><br>（全周 360°に視認できること）</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top:16px; padding:12px 16px; background:rgba(255,209,102,0.08); border:1px solid var(--gold); border-radius:10px; font-size:0.83rem; line-height:1.8;">
+        <b style="color:var(--gold);">⚠️ 重要：全長20m以上の2マスト船</b><br>
+        前マスト灯と後マスト灯の高さ差：同表に基づき<br>
+        ・全長20m以上：<span class="hl-gold">間隔2m以上・高さ4m以上</span>の差<br>
+        ・全長20m未満：<span class="hl-green">間隔1m以上・高さ2m以上</span>の差
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="divider"></div>
+
+<!-- ============================================================
+     SLIDE 6: 最強速力算出 ＆ 舷灯許容角度
+     ============================================================ -->
+<div class="diagram-slide">
+  <div class="slide-header">
+    <div class="slide-num">6</div>
+    <h2>最強速力<span>算出</span> ＆ 舷灯許容角度</h2>
+    <span class="ref-label">小安則 第2条・告示 第20条の2</span>
+  </div>
+
+  <!-- ── 上段：図 ＋ 判定規定 ── -->
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:16px;">
+
+    <!-- 左：2等辺三角形 図解 -->
+    <div style="background:rgba(13,37,71,0.9); border:1px solid var(--accent); border-radius:12px; padding:16px 18px;">
+      <b style="color:var(--accent); font-size:0.95rem;">📐 マスト灯・舷灯の位置関係（正面図）</b>
+      <svg viewBox="0 0 340 310" xmlns="http://www.w3.org/2000/svg" style="display:block; width:100%; margin-top:8px;">
+        <defs>
+          <marker id="arrG" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#06d6a0"/></marker>
+          <marker id="arrY" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#ffd166"/></marker>
+          <marker id="arrB" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#8ab4d4"/></marker>
+          <marker id="arrR" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#ef476f"/></marker>
+          <marker id="arrYr" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto rotate(180)"><polygon points="0 0,7 3.5,0 7" fill="#ffd166"/></marker>
+        </defs>
+
+        <!-- 船体（甲板ライン） -->
+        <rect x="30" y="235" width="280" height="30" rx="4" fill="#1a3a6e" stroke="#2a5a9e" stroke-width="1.5"/>
+        <line x1="30" y1="235" x2="310" y2="235" stroke="#3a6aae" stroke-width="2"/>
+        <text x="8" y="238" fill="#8ab4d4" font-size="9" font-family="sans-serif">甲板</text>
+
+        <!-- 中心線（垂直破線） -->
+        <line x1="170" y1="10" x2="170" y2="240" stroke="#2a4a6a" stroke-width="1" stroke-dasharray="5,4"/>
+        <text x="174" y="18" fill="#2a4a6a" font-size="8" font-family="sans-serif">中心線</text>
+
+        <!-- 2等辺三角形の辺（金色） -->
+        <!-- 頂点(170,55) → 右底(280,235)、左底(60,235) -->
+        <line x1="170" y1="55" x2="280" y2="235" stroke="#ffd166" stroke-width="1.8"/>
+        <line x1="170" y1="55" x2="60"  y2="235" stroke="#ffd166" stroke-width="1.8"/>
+        <!-- 底辺（舷灯間 = 幅B） -->
+        <line x1="60" y1="235" x2="280" y2="235" stroke="#5a8aaa" stroke-width="1.5" stroke-dasharray="6,3"/>
+
+        <!-- マスト灯（頂点） -->
+        <circle cx="170" cy="55" r="11" fill="#fffacd" stroke="#ffd166" stroke-width="2"/>
+        <text x="184" y="50" fill="#ffd166" font-size="10" font-family="sans-serif" font-weight="bold">マスト灯</text>
+        <text x="184" y="63" fill="#8ab4d4" font-size="8.5" font-family="sans-serif">（頂点）</text>
+
+        <!-- 右舷灯 -->
+        <circle cx="280" cy="235" r="9" fill="#00cc66" stroke="#06d6a0" stroke-width="2"/>
+        <text x="291" y="231" fill="#06d6a0" font-size="9" font-family="sans-serif">右舷灯</text>
+        <text x="291" y="243" fill="#06d6a0" font-size="8" font-family="sans-serif">（底辺右端）</text>
+
+        <!-- 左舷灯 -->
+        <circle cx="60" cy="235" r="9" fill="#ff4466" stroke="#ef476f" stroke-width="2"/>
+        <text x="4"  y="231" fill="#ef476f" font-size="9" font-family="sans-serif">左舷灯</text>
+        <text x="2"  y="243" fill="#ef476f" font-size="8" font-family="sans-serif">（底辺左端）</text>
+
+        <!-- ── 高さH（中心線上、甲板から頂点）両矢印 ── -->
+        <line x1="148" y1="55"  x2="148" y2="235" stroke="#ff9966" stroke-width="1.4"
+              marker-end="url(#arrY)" marker-start="url(#arrYr)"/>
+        <text x="112" y="148" fill="#ff9966" font-size="9.5" font-family="sans-serif" font-weight="bold">H（高さ）</text>
+        <text x="108" y="160" fill="#ff9966" font-size="8.5" font-family="sans-serif">=幅B と等しい</text>
+
+        <!-- ── 幅B（底辺）両矢印 ── -->
+        <line x1="60" y1="258" x2="280" y2="258" stroke="#06d6a0" stroke-width="1.4"
+              marker-end="url(#arrG)"/>
+        <line x1="280" y1="258" x2="60" y2="258" stroke="#06d6a0" stroke-width="1.4"
+              marker-end="url(#arrG)"/>
+        <text x="148" y="273" fill="#06d6a0" font-size="10" font-family="sans-serif" font-weight="bold" text-anchor="middle">幅 B（舷側間 = 底辺）</text>
+
+        <!-- ── 仰角27°の弧（右底） ── -->
+        <!-- tan(27°)≒0.5095  B/2=110px  H=180px → atan(110/180)≒31.4°  ここでは図示のみ27°と表記 -->
+        <path d="M280,235 L258,235 A22,22 0 0 0 264.7,218.3 Z"
+              fill="rgba(255,209,102,0.25)" stroke="#ffd166" stroke-width="1"/>
+        <text x="233" y="224" fill="#ffd166" font-size="9.5" font-family="sans-serif" font-weight="bold">27°</text>
+
+        <!-- ── 同左 ── -->
+        <path d="M60,235 L82,235 A22,22 0 0 1 75.3,218.3 Z"
+              fill="rgba(255,209,102,0.25)" stroke="#ffd166" stroke-width="1"/>
+
+        <!-- ── 甲板上6m注記 ── -->
+        <line x1="196" y1="95" x2="196" y2="235" stroke="#aaffaa" stroke-width="1" stroke-dasharray="3,3"/>
+        <text x="198" y="108" fill="#aaffaa" font-size="8.5" font-family="sans-serif">甲板上</text>
+        <text x="198" y="119" fill="#aaffaa" font-size="8.5" font-family="sans-serif">6m 以上</text>
+        <text x="198" y="130" fill="#7ab47a" font-size="8" font-family="sans-serif">（低速時の</text>
+        <text x="198" y="140" fill="#7ab47a" font-size="8" font-family="sans-serif"> 下限高さ）</text>
+
+        <!-- ── 仰角27°のキャプション ── -->
+        <text x="170" y="300" fill="#ffd166" font-size="8.5" font-family="sans-serif" text-anchor="middle">
+          仰角27° → H = B/2 ÷ tan(27°) ≒ B　∴ 高さ H ≒ 幅 B と等しい
+        </text>
+      </svg>
+    </div>
+
+    <!-- 右：判定規定 -->
+    <div style="background:rgba(255,209,102,0.07); border:1px solid var(--gold); border-radius:12px; padding:18px 20px; font-size:0.84rem; line-height:1.85;">
+      <b style="color:var(--gold); font-size:0.95rem;">⚖️ 最強速力による判定（告示 第20条の2）</b><br><br>
+
+      <b style="color:#8ab4d4;">比較算式（前項に規定する算式）：</b>
+      <div style="margin:8px 0; padding:10px 14px; background:rgba(0,0,0,0.3); border-radius:8px; font-family:monospace; color:#c8f8ff; font-size:0.95rem; line-height:2;">
+        V<sub>ref</sub> = 3.7 × Δ<sup>0.1667</sup>　<span style="color:#8ab4d4; font-size:0.82rem;">（m/s）→ kt 換算して比較</span>
+      </div>
+
+      <div style="margin-top:14px; display:flex; flex-direction:column; gap:10px;">
+        <!-- 判定A -->
+        <div style="padding:12px 14px; background:rgba(6,214,160,0.12); border:1.5px solid var(--green); border-radius:8px;">
+          <b style="color:var(--green);">✅ 最強速力 ≧ 比較算式値 の場合</b><br>
+          <span style="color:#c8e8d8;">マスト灯を頂点とした舷灯を底辺とし挟む角は<b>仰角 27° を下限</b>とする</span>
+        </div>
+        <!-- 判定B -->
+        <div style="padding:12px 14px; background:rgba(239,71,111,0.1); border:1.5px solid var(--red); border-radius:8px;">
+          <b style="color:var(--red);">⚠️ 最強速力 ＜ 比較算式値 の場合</b><br>
+          <span style="color:#f0c8d0;">マスト灯の高さは<b>上甲板上 6m 以上</b>を下限とする</span>
+        </div>
+      </div>
+
+      <div style="margin-top:14px; padding:10px 12px; background:rgba(0,0,0,0.25); border-radius:8px; font-size:0.8rem; color:#8ab4d4; line-height:1.7;">
+        <b style="color:#aaaaff;">∠ 仰角と水平距離の関係：</b><br>
+        V<sub>horiz</sub> = H × tan(27°)　（H：マスト灯〜舷灯 垂直距離）<br>
+        H：マスト灯〜舷灯の垂直距離（m）
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 下段：計算ツール ── -->
+  <div style="margin-top:24px; background:#0d2547; border:2px solid var(--accent); border-radius:14px; padding:24px 28px;">
+    <p style="color:var(--accent); font-weight:700; font-size:1rem; margin-bottom:4px;">⚡ 最強速力 簡易計算ツール</p>
+    <p style="color:#8ab4d4; font-size:0.8rem; margin-bottom:18px;">
+      最強速力 V = 0.755 × √L × (PS/Δ)^0.623　／　比較算式 V<sub>ref</sub> = 3.7 × Δ^0.1667　（m/s → kt）
+    </p>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:start;">
+
+      <!-- 左：入力欄 -->
+      <div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px;">
+
+          <!-- L -->
+          <label style="display:flex; flex-direction:column; gap:4px; font-size:0.84rem;">
+            <span style="color:#8ab4d4;"><b style="color:var(--gold);">L</b> 船の長さ（m）</span>
+            <div style="display:flex; align-items:center; gap:6px;">
+              <input id="spd-L" type="number" value="10" min="0.1" step="0.1"
+                style="width:100%; padding:7px 10px; border-radius:7px; border:1px solid var(--accent);
+                       background:#091828; color:#fff; font-size:1rem; font-weight:700;
+                       text-align:right; outline:none;" oninput="calcSpeed()">
+              <span style="color:#8ab4d4; white-space:nowrap;">m</span>
+            </div>
+          </label>
+
+          <!-- B -->
+          <label style="display:flex; flex-direction:column; gap:4px; font-size:0.84rem;">
+            <span style="color:#8ab4d4;"><b style="color:var(--gold);">B</b> 最大幅（m）</span>
+            <div style="display:flex; align-items:center; gap:6px;">
+              <input id="spd-B" type="number" value="3" min="0.1" step="0.1"
+                style="width:100%; padding:7px 10px; border-radius:7px; border:1px solid var(--accent);
+                       background:#091828; color:#fff; font-size:1rem; font-weight:700;
+                       text-align:right; outline:none;" oninput="calcSpeed()">
+              <span style="color:#8ab4d4; white-space:nowrap;">m</span>
+            </div>
+          </label>
+
+          <!-- D -->
+          <label style="display:flex; flex-direction:column; gap:4px; font-size:0.84rem;">
+            <span style="color:#8ab4d4;"><b style="color:var(--gold);">D</b> 型深さ（m）</span>
+            <div style="display:flex; align-items:center; gap:6px;">
+              <input id="spd-D" type="number" value="1.2" min="0.01" step="0.01"
+                style="width:100%; padding:7px 10px; border-radius:7px; border:1px solid var(--accent);
+                       background:#091828; color:#fff; font-size:1rem; font-weight:700;
+                       text-align:right; outline:none;" oninput="calcSpeed()">
+              <span style="color:#8ab4d4; white-space:nowrap;">m</span>
+            </div>
+          </label>
+
+          <!-- F（乾舷） -->
+          <label style="display:flex; flex-direction:column; gap:4px; font-size:0.84rem;">
+            <span style="color:#8ab4d4;"><b style="color:var(--gold);">F</b> 乾舷（m）</span>
+            <div style="display:flex; align-items:center; gap:6px;">
+              <input id="spd-F" type="number" value="0.3" min="0" step="0.01"
+                style="width:100%; padding:7px 10px; border-radius:7px; border:1px solid var(--gold);
+                       background:#091828; color:#ffd166; font-size:1rem; font-weight:700;
+                       text-align:right; outline:none;" oninput="calcSpeed()">
+              <span style="color:#8ab4d4; white-space:nowrap;">m</span>
+            </div>
+          </label>
+
+          <!-- N（最大搭載人員）：2列分 -->
+          <label style="display:flex; flex-direction:column; gap:4px; font-size:0.84rem; grid-column:span 2;">
+            <span style="color:#8ab4d4;"><b style="color:var(--green);">N</b> 最大搭載人員（人）
+              <span style="font-size:0.78rem; color:#7ab4a4;">　d補正 = F − 0.075N/(0.78×L×B)</span>
+            </span>
+            <div style="display:flex; align-items:center; gap:6px;">
+              <input id="spd-N" type="number" value="6" min="0" step="1"
+                style="width:50%; padding:7px 10px; border-radius:7px; border:1px solid var(--green);
+                       background:#091828; color:#8af8d0; font-size:1rem; font-weight:700;
+                       text-align:right; outline:none;" oninput="calcSpeed()">
+              <span style="color:#8ab4d4; white-space:nowrap;">人</span>
+            </div>
+          </label>
+
+          <!-- PS（主機出力）：2列分 -->
+          <label style="display:flex; flex-direction:column; gap:4px; font-size:0.84rem; grid-column:span 2;">
+            <span style="color:#8ab4d4;"><b style="color:var(--red);">PS</b> 主機出力（馬力）
+              <span style="font-size:0.78rem; color:var(--red);">　※ PS ≧ 120 の場合は PS = 120 として計算</span>
+              <span id="ps-cap-note" style="margin-left:8px; font-size:0.78rem; color:#ff6666; display:none;">
+                ⚠ 上限適用中（PS = 120）
+              </span>
+            </span>
+            <div style="display:flex; align-items:center; gap:6px;">
+              <input id="spd-PS" type="number" value="60" min="0.1" step="1"
+                style="width:50%; padding:7px 10px; border-radius:7px; border:1px solid var(--red);
+                       background:#091828; color:#ff9aaa; font-size:1rem; font-weight:700;
+                       text-align:right; outline:none;" oninput="calcSpeed()">
+              <span style="color:#8ab4d4; white-space:nowrap;">PS（馬力）</span>
+            </div>
+          </label>
+        </div>
+
+        <!-- 計算過程 -->
+        <div style="background:rgba(0,0,0,0.3); border-radius:8px; padding:12px 14px;
+                    font-family:monospace; font-size:0.78rem; color:#8ab4d4;
+                    line-height:1.85; white-space:pre-wrap;" id="spd-process">計算過程がここに表示されます</div>
+      </div>
+
+      <!-- 右：結果表示 -->
+      <div style="display:flex; flex-direction:column; gap:12px;">
+
+        <!-- d（補正後喫水） -->
+        <div style="padding:12px 16px; background:rgba(255,209,102,0.08); border:1px solid var(--gold); border-radius:10px;">
+          <div style="font-size:0.8rem; color:#8ab4d4; margin-bottom:3px;">d　補正後計画満載喫水</div>
+          <div style="font-size:0.75rem; color:#7a9ab4; margin-bottom:4px;">= D − （F − 0.075N/(0.78×L×B)）</div>
+          <div style="display:flex; align-items:baseline; gap:8px;">
+            <span id="res-d" style="font-size:1.5rem; font-weight:900; color:var(--gold);">―</span>
+            <span style="color:#8ab4d4;">m</span>
+          </div>
+        </div>
+
+        <!-- Δ -->
+        <div style="padding:12px 16px; background:rgba(0,180,216,0.08); border:1px solid var(--accent); border-radius:10px;">
+          <div style="font-size:0.8rem; color:#8ab4d4; margin-bottom:3px;">Δ　排水容積（= 20条のV）</div>
+          <div style="font-size:0.75rem; color:#7a9ab4; margin-bottom:4px;">= 0.5 × L × B × d</div>
+          <div style="display:flex; align-items:baseline; gap:8px;">
+            <span id="res-delta" style="font-size:1.5rem; font-weight:900; color:var(--accent);">―</span>
+            <span style="color:#8ab4d4;">m³</span>
+          </div>
+        </div>
+
+        <!-- 最強速力 -->
+        <div style="padding:12px 16px; background:rgba(6,214,160,0.08); border:1px solid var(--green); border-radius:10px;">
+          <div style="font-size:0.8rem; color:#8ab4d4; margin-bottom:3px;">最強速力（第2条算式）</div>
+          <div style="display:flex; align-items:baseline; gap:8px; margin-bottom:4px;">
+            <span id="res-Vms" style="font-size:1.5rem; font-weight:900; color:var(--green);">―</span>
+            <span style="color:#8ab4d4;">m/s</span>
+            <span style="color:#8ab4d4; margin-left:8px;">=</span>
+            <span id="res-Vkt" style="font-size:1.5rem; font-weight:900; color:var(--gold);">―</span>
+            <span style="color:#8ab4d4;">kt</span>
+          </div>
+        </div>
+
+        <!-- 比較算式 -->
+        <div style="padding:12px 16px; background:rgba(170,170,255,0.06); border:1px solid #6666aa; border-radius:10px;">
+          <div style="font-size:0.8rem; color:#8ab4d4; margin-bottom:3px;">比較算式（第20条の2 前項）</div>
+          <div style="font-size:0.75rem; color:#7a9ab4; margin-bottom:4px;">= 3.7 × Δ^0.1667</div>
+          <div style="display:flex; align-items:baseline; gap:8px;">
+            <span id="res-Vref-ms" style="font-size:1.5rem; font-weight:900; color:#aaaaff;">―</span>
+            <span style="color:#8ab4d4;">m/s</span>
+            <span style="color:#8ab4d4; margin-left:8px;">=</span>
+            <span id="res-Vref-kt" style="font-size:1.5rem; font-weight:900; color:#ccccff;">―</span>
+            <span style="color:#8ab4d4;">kt</span>
+          </div>
+        </div>
+
+        <!-- 判定結果 -->
+        <div id="judgment-box" style="padding:16px 18px; border-radius:12px; border:2px solid #444; background:rgba(0,0,0,0.2); text-align:center;">
+          <div style="font-size:0.85rem; color:#8ab4d4;">判定結果</div>
+          <div id="judgment-text" style="font-size:1rem; font-weight:700; margin-top:6px; color:#8ab4d4;">
+            入力値を確認してください
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function calcSpeed() {
+  const L    = parseFloat(document.getElementById('spd-L').value)  || 0;
+  const B    = parseFloat(document.getElementById('spd-B').value)  || 0;
+  const D    = parseFloat(document.getElementById('spd-D').value)  || 0;
+  const F    = parseFloat(document.getElementById('spd-F').value)  || 0;
+  const N    = parseFloat(document.getElementById('spd-N').value)  || 0;
+  const PSraw= parseFloat(document.getElementById('spd-PS').value) || 0;
+
+  // PS 上限
+  const PS = Math.min(PSraw, 120);
+  document.getElementById('ps-cap-note').style.display = PSraw > 120 ? 'inline' : 'none';
+
+  // d 補正（人員荷重分）
+  const dCorr = (L > 0 && B > 0) ? (0.075 * N) / (0.78 * L * B) : 0;
+  const d = D - (F - dCorr);
+
+  const jBox = document.getElementById('judgment-box');
+  const jText= document.getElementById('judgment-text');
+
+  const set = (id, val) => { document.getElementById(id).textContent = val; };
+
+  if (d <= 0 || L <= 0 || B <= 0 || PS <= 0) {
+    set('res-d',       d.toFixed(3) + (d <= 0 ? '（負値：入力確認）' : ''));
+    set('res-delta',   '―');
+    set('res-Vms',     '―'); set('res-Vkt',      '―');
+    set('res-Vref-ms', '―'); set('res-Vref-kt',  '―');
+    jText.textContent = '入力値を確認してください';
+    jBox.style.border = '2px solid #444';
+    jBox.style.background = 'rgba(0,0,0,0.2)';
+    set('spd-process', 'd = D − (F − 0.075N/(0.78×L×B))\n  = ' + D + ' − (' + F + ' − ' + dCorr.toFixed(4) + ') = ' + d.toFixed(4));
+    return;
+  }
+
+  set('res-d', d.toFixed(4));
+
+  // Δ = 0.5 × L × B × d
+  const delta = 0.5 * L * B * d;
+  set('res-delta', delta.toFixed(3));
+
+  // 最強速力 V = 0.755 × √L × (PS/Δ)^0.623
+  const ratio = PS / delta;
+  const Vms   = 0.755 * Math.sqrt(L) * Math.pow(ratio, 0.623);
+  const Vkt   = Vms / 0.5144;
+  set('res-Vms', Vms.toFixed(3));
+  set('res-Vkt', Vkt.toFixed(2));
+
+  // 比較算式 Vref = 3.7 × Δ^0.1667
+  const Vref_ms = 3.7 * Math.pow(delta, 0.1667);
+  const Vref_kt = Vref_ms / 0.5144;
+  set('res-Vref-ms', Vref_ms.toFixed(3));
+  set('res-Vref-kt', Vref_kt.toFixed(2));
+
+  // 判定
+  if (Vms >= Vref_ms) {
+    jBox.style.border = '2px solid var(--green)';
+    jBox.style.background = 'rgba(6,214,160,0.12)';
+    jText.style.color = '#06d6a0';
+    jText.innerHTML = '✅ 最強速力 ≧ 比較算式値<br><span style="font-size:0.9rem;">マスト灯を頂点とした舷灯を底辺とし挟む角は<b>仰角 27° を下限</b>とする</span>';
+  } else {
+    jBox.style.border = '2px solid var(--red)';
+    jBox.style.background = 'rgba(239,71,111,0.12)';
+    jText.style.color = '#ef476f';
+    jText.innerHTML = '⚠️ 最強速力 ＜ 比較算式値<br><span style="font-size:0.9rem;">マスト灯の高さは<b>上甲板上 6m 以上</b>を下限とする</span>';
+  }
+
+  // 計算過程
+  document.getElementById('spd-process').textContent =
+    'dCorr = 0.075×' + N + ' / (0.78×' + L.toFixed(2) + '×' + B.toFixed(2) + ')\n' +
+    '      = ' + dCorr.toFixed(5) + ' m\n' +
+    'd     = D − (F − dCorr)\n' +
+    '      = ' + D.toFixed(3) + ' − (' + F.toFixed(3) + ' − ' + dCorr.toFixed(5) + ')\n' +
+    '      = ' + d.toFixed(4) + ' m\n\n' +
+    'Δ     = 0.5 × ' + L.toFixed(2) + ' × ' + B.toFixed(2) + ' × ' + d.toFixed(4) + '\n' +
+    '      = ' + delta.toFixed(3) + ' m³\n\n' +
+    'PS    = ' + PSraw + (PSraw > 120 ? ' → 上限適用 PS = 120' : '') + '\n\n' +
+    'V     = 0.755 × √' + L.toFixed(2) + ' × (' + PS + '/' + delta.toFixed(3) + ')^0.623\n' +
+    '      = ' + Vms.toFixed(3) + ' m/s = ' + Vkt.toFixed(2) + ' kt\n\n' +
+    'Vref  = 3.7 × ' + delta.toFixed(3) + '^0.1667\n' +
+    '      = ' + Vref_ms.toFixed(3) + ' m/s = ' + Vref_kt.toFixed(2) + ' kt\n\n' +
+    '判定  : V ' + (Vms >= Vref_ms ? '≧' : '＜') + ' Vref';
+}
+// 初期計算
+calcSpeed();
+</script>
+
+<div class="page-footer">
+
+  船舶検査細則（令和7年4月24日版）第82条・第20条 / 航海用具の基準を定める告示 第2条・第20条 ｜ 初任船舶検査官研修資料
+</div>
+
+</body>
+</html>
